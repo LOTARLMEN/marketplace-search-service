@@ -1,10 +1,10 @@
+import os
+
 import uvicorn
 
 from src.fastapi import create_app
 
 app = create_app()
-
-import os
 
 if __name__ == "__main__":
     port = 8003
