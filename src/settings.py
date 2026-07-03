@@ -23,6 +23,8 @@ class Settings(BaseSettings):
 
         if "KAFKA_BROKERS" in os.environ:
             self.kafka_bootstrap_servers = os.environ["KAFKA_BROKERS"]
+        if "KUBERNETES_SERVICE_HOST" in os.environ:
+            self.ad_service_url = "http://student-lotarlmen-marketplace-ad-service-web.student-lotarlmen-marketplace-ad-service.svc.cluster.local:8000"
 
     @property
     def database_url(self) -> str:
