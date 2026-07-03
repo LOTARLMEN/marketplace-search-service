@@ -1,10 +1,9 @@
-from datetime import datetime, UTC
-
+from datetime import UTC, datetime
 from typing import List
 
-from sqlalchemy import func, select, delete
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import delete, func, select
 from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.application.ports.repositories import SearchRepository, SortKey
 from src.domain.entities import SearchDocument
