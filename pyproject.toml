@@ -8,6 +8,7 @@ dependencies = [
     "aiokafka>=0.12.0",
     "alembic>=1.18.4",
     "asyncpg>=0.31.0",
+    "black>=26.5.1",
     "fastapi>=0.135.3",
     "greenlet>=3.4.0",
     "httpx>=0.28.1",
