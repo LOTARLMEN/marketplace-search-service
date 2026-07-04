@@ -77,3 +77,19 @@ async def test_suggest_rejects_short_prefix(client: AsyncClient) -> None:
     response = await client.get("/search/suggest", params={"q": "M"})
 
     assert response.status_code == 422
+
+
+@pytest.mark.asyncio
+async def test_trace_id_propagation_provided(client: AsyncClient) -> None:
+    resp = await client.get("/search", headers={"X-Trace-Id": "test-trace-123"})
+    assert resp.headers.get("x-trace-id") == "test-trace-123"
+
+
+@pytest.mark.asyncio
+async def test_trace_id_propagation_generated(client: AsyncClient) -> None:
+    resp = await client.get("/search")
+    assert "x-trace-id" in resp.headers
+    import uuid
+    val = resp.headers.get("x-trace-id")
+    assert val is not None
+    uuid.UUID(val)
